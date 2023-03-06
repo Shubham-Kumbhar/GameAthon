@@ -5,7 +5,7 @@ using UnityEngine;
 public class grapling : MonoBehaviour
 {
     [SerializeField] private LineRenderer Rope;
-    //[SerializeField] private CharacterController controller;
+    [SerializeField] private CharacterController controller;
     [SerializeField] private Transform Graplinghook, handPosition, player, graplingHookEndPoint;
     [SerializeField] private LayerMask graplinglayer;
     [SerializeField] private float maxgraplingdistance,graplingHookSpeed = 0f,playerElasticDist=0.5f;
@@ -73,11 +73,11 @@ public class grapling : MonoBehaviour
         Graplinghook.position = Vector3.Lerp(Graplinghook.position, hookpoint, graplingHookSpeed * Time.deltaTime);
         if (Vector3.Distance(Graplinghook.position, hookpoint) < 0.1f)
         {
-            //controller.enabled = false;
+            controller.enabled = false;
             player.position = Vector3.Lerp(player.position, hookpoint, graplingHookSpeed * Time.deltaTime);
             if (Vector3.Distance(player.position, hookpoint) < playerElasticDist)
             {
-                //controller.enabled = true;
+                controller.enabled = true;
                 print("character controiller is enabled");
                 Graplinghook.SetParent(handPosition);
                 isgrapling = false;
