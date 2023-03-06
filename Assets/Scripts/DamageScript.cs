@@ -11,6 +11,8 @@ public class DamageScript : MonoBehaviour
     [SerializeField]private float damageRadius=2f;
     [SerializeField]private float damage=100f;
     [SerializeField]private LayerMask enemyLayer;
+    Ray ray;
+
     
     void Start()
     {
@@ -18,13 +20,15 @@ public class DamageScript : MonoBehaviour
     }
     private void Update() {
         slider.value=health;
-    }
-    void OnCollisionEnter(Collision other)
-    {
         if(Input.GetMouseButtonDown(0))
-        {
-            //Add Slicing Logic
-            Destroy(other.transform.gameObject);
-        }   
+        AttackEnemy();
     }
-}
+    void AttackEnemy()
+    {
+        RaycastHit hit;
+        if(Physics.Raycast(this.transform.position,this.transform.forward, out hit,damageRadius, enemyLayer))
+        Destroy(hit.transform.gameObject);
+    }
+        
+    }
+
