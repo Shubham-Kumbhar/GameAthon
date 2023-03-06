@@ -26,6 +26,7 @@ public class BladeModeScript : MonoBehaviour
     private CinemachineComposer[] composers;
 
     public LayerMask layerMask;
+    private Rigidbody rb;
     ParticleSystem[] particles;
 
     void Start()
@@ -33,7 +34,7 @@ public class BladeModeScript : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         cutPlane.gameObject.SetActive(false);
-
+        rb=GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         movement = GetComponent<MovementInput>();
         normalFOV = TPCamera.m_Lens.FieldOfView;
@@ -73,6 +74,7 @@ public class BladeModeScript : MonoBehaviour
                 Slice();
             }
         }
+       
 
         Debug();
     }

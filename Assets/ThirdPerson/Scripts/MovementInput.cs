@@ -17,6 +17,7 @@ public class MovementInput : MonoBehaviour {
 	public bool blockRotationPlayer;
 	public float desiredRotationSpeed = 0.1f;
 	public Animator anim;
+	private Rigidbody rb;
 	public float Speed;
 	public float allowPlayerRotation = 0.1f;
 	public Camera cam;
@@ -32,6 +33,8 @@ public class MovementInput : MonoBehaviour {
     public float StartAnimTime = 0.3f;
     [Range(0, 1f)]
     public float StopAnimTime = 0.15f;
+	public float JumpForce=5f;
+	public float Gravity=0.005f;
 
     private float verticalVel;
     private Vector3 moveVector;
@@ -40,6 +43,7 @@ public class MovementInput : MonoBehaviour {
 	void Start () {
 		anim = this.GetComponent<Animator> ();
 		cam = Camera.main;
+		rb=GetComponent<Rigidbody>();
 		controller = this.GetComponent<CharacterController> ();
 	}
 	
@@ -49,18 +53,21 @@ public class MovementInput : MonoBehaviour {
         
 		//If you don't need the character grounded then get rid of this part.
 		isGrounded = controller.isGrounded;
-		/*if (isGrounded) {
+		if (isGrounded) {
 			verticalVel -= 0;
 		} else {
-			verticalVel -= 2;
+			verticalVel -= 1;
 		}
-		moveVector = new Vector3 (0, verticalVel, 0);
-		controller.Move (moveVector);*/
+		moveVector = new Vector3 (0, verticalVel*Gravity*Time.deltaTime,0);
+		controller.Move (moveVector);
         
 		if(isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
 			//jump
+			controller.Move(Vector3.up*JumpForce);
+
         }
+		
 		//Updater
 	}
 
