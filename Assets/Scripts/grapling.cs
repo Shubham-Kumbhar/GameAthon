@@ -23,7 +23,8 @@ public class grapling : MonoBehaviour
         if (Rope.enabled)
         {
             Rope.SetPosition(0, handPosition.position);
-            Rope.SetPosition(1, graplingHookEndPoint.position);
+            //Rope.SetPosition(1, graplingHookEndPoint.position);
+            Rope.SetPosition(1, hookpoint);
             
         }
     }
@@ -35,7 +36,8 @@ public class grapling : MonoBehaviour
             
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown("e"))
+
         {
             shoothook();
         }
