@@ -73,6 +73,7 @@ public class MovementInput : MonoBehaviour {
 		else
 		anim.SetBool("IsJumping",false);
 		
+
 		//Updater
 	}
 
