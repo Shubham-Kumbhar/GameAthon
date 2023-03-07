@@ -68,7 +68,7 @@ public class MovementInput : MonoBehaviour {
         {
 			//jump
 			anim.SetBool("IsJumping",true);
-
+			controller.Move(new Vector3(0,JumpForce*Time.deltaTime,0));
         }
 		else
 		anim.SetBool("IsJumping",false);
