@@ -70,7 +70,7 @@ public class grapling : MonoBehaviour
             Graplinghook.parent = null;
             Graplinghook.LookAt(hookpoint);
             Rope.enabled = true;
-            anim.SetBool("IsSliding", true);
+            //anim.SetBool("IsSliding", true);
             bloooom(true);
         }
 
@@ -92,7 +92,7 @@ public class grapling : MonoBehaviour
                 Graplinghook.SetParent(handPosition);
                 isgrapling = false;
                 Rope.enabled = false;
-                anim.SetBool("IsSliding", false);
+                //anim.SetBool("IsSliding", false);
                 bloooom(false);
             }
 
