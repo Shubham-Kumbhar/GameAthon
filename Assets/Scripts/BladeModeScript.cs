@@ -100,7 +100,7 @@ public class BladeModeScript : MonoBehaviour
                 Destroy(hits[i].gameObject);
             }
             if(hits[i].transform.CompareTag("Enemy")){
-            GetComponent<MovementInput>().killCount++;
+            GetComponent<EMP>().killCount++;
             Debug.Log("Working");
         }}
     }

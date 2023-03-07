@@ -17,8 +17,7 @@ public class MovementInput : MonoBehaviour {
 	public bool blockRotationPlayer;
 	public float desiredRotationSpeed = 0.1f;
 	public Animator anim;
-	public bool isEMP=false;
-	public int killCount=0;
+	
 	
 	public float Speed;
 	public float allowPlayerRotation = 0.1f;
@@ -37,7 +36,7 @@ public class MovementInput : MonoBehaviour {
     public float StopAnimTime = 0.15f;
 	public float JumpForce=5f;
 	public float Gravity=0.005f;
-	public float EMP_Time=5f;
+
 
     private float verticalVel;
     private Vector3 moveVector;
@@ -53,7 +52,7 @@ public class MovementInput : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		InputMagnitude ();
-		ActivateEMP();
+		
         
 		//If you don't need the character grounded then get rid of this part.
 		isGrounded = controller.isGrounded;
@@ -135,18 +134,8 @@ public class MovementInput : MonoBehaviour {
 			anim.SetFloat ("Blend", Speed, StopAnimTime, Time.deltaTime);
 		}
 	}
-		void ActivateEMP()
-		{
-			if(killCount>=4 && Input.GetKeyDown(KeyCode.X)){
-			isEMP=true;
-			killCount-=4;
-		}
-		Invoke("DisActivateEMP",EMP_Time);
-		void DisActivateEMP()
-		{
-			isEMP=false;
-		}
+		
 	}
-	}
+	
 
 
