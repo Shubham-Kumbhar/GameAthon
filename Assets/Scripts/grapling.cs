@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
+using Cinemachine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class grapling : MonoBehaviour
 {
@@ -10,6 +13,7 @@ public class grapling : MonoBehaviour
     [SerializeField] private LayerMask graplinglayer;
     [SerializeField] private float maxgraplingdistance,graplingHookSpeed = 0f,playerElasticDist=0.5f;
     [SerializeField] private Vector3 graplingPlayeOffset;
+    [SerializeField] private Animator anim;
     bool isgrapling, isShooting;
     private Vector3 hookpoint;
     private void Start()
@@ -45,7 +49,9 @@ public class grapling : MonoBehaviour
         {
             grapling_();
         }
-        
+        bloooom(!isgrapling);
+
+
     }
 
     private void shoothook()
@@ -64,6 +70,7 @@ public class grapling : MonoBehaviour
             Graplinghook.parent = null;
             Graplinghook.LookAt(hookpoint);
             Rope.enabled = true;
+            anim.SetBool("IsSliding", true);
         }
 
 
@@ -84,9 +91,37 @@ public class grapling : MonoBehaviour
                 Graplinghook.SetParent(handPosition);
                 isgrapling = false;
                 Rope.enabled = false;
+                anim.SetBool("IsSliding", false);
             }
 
 
         }
+    }
+
+    void bloooom(bool state)
+    {
+        float vig = state ? .6f : 0;
+        float chrom = state ? 1 : 0;
+        float depth = state ? 4.8f : 8;
+        float vig2 = state ? 0f : .6f;
+        float chrom2 = state ? 0 : 1;
+        float depth2 = state ? 8 : 4.8f;
+        DOVirtual.Float(chrom2, chrom, .1f, Chromatic);
+        DOVirtual.Float(vig2, vig, .1f, Vignette);
+        DOVirtual.Float(depth2, depth, .1f, DepthOfField);
+    }
+    void Chromatic(float x)
+    {
+        Camera.main.GetComponentInChildren<PostProcessVolume>().profile.GetSetting<ChromaticAberration>().intensity.value = x;
+    }
+
+    void Vignette(float x)
+    {
+        Camera.main.GetComponentInChildren<PostProcessVolume>().profile.GetSetting<Vignette>().intensity.value = x;
+    }
+
+    void DepthOfField(float x)
+    {
+        Camera.main.GetComponentInChildren<PostProcessVolume>().profile.GetSetting<DepthOfField>().aperture.value = x;
     }
 }
