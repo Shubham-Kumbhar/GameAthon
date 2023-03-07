@@ -20,5 +20,7 @@ public class Health : MonoBehaviour
         slider.value=health;
         if(health<=0)
         SceneManager.LoadScene("GameOver");
+        if(this.transform.position.y<=-10)
+        SceneManager.LoadScene("Level1");
     }
 }
