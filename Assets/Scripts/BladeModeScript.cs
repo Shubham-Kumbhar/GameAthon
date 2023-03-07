@@ -14,6 +14,7 @@ public class BladeModeScript : MonoBehaviour
     private MovementInput movement;
     private Vector3 normalOffset;
     public Vector3 zoomOffset;
+    public GameObject crossHair;
     private float normalFOV;
     public float zoomFOV = 15;
     public float destroycutedObject=3f ;
@@ -128,6 +129,7 @@ public class BladeModeScript : MonoBehaviour
 
         cutPlane.localEulerAngles = Vector3.zero;
         cutPlane.gameObject.SetActive(state);
+        crossHair.SetActive(state);
 
         string x = state ? "Horizontal" : "Mouse X"; string y = state ? "Vertical" : "Mouse Y";
         TPCamera.m_XAxis.m_InputAxisName = x; TPCamera.m_YAxis.m_InputAxisName = y;
