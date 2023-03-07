@@ -101,7 +101,7 @@ public class BladeModeScript : MonoBehaviour
             }
             if(hits[i].transform.CompareTag("Enemy")){
             GetComponent<EMP>().killCount++;
-            Debug.Log("Working");
+            
         }}
     }
 
