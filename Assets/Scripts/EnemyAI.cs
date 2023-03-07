@@ -43,30 +43,30 @@ public class EnemyAI : MonoBehaviour
         if (playerInAttackRange && playerInSightRange && !player.GetComponent<EMP>().isEMP) AttackPlayer();
     }
 
-    private void Patroling()
-    {
-        if (!walkPointSet) SearchWalkPoint();
+    // private void Patroling()
+    // {
+    //     if (!walkPointSet) SearchWalkPoint();
 
-        if (walkPointSet)
-            agent.SetDestination(walkPoint);
+    //     if (walkPointSet)
+    //         agent.SetDestination(walkPoint);
 
-        Vector3 distanceToWalkPoint = transform.position - walkPoint;
+    //     Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
-        //Walkpoint reached
-        if (distanceToWalkPoint.magnitude < 1f)
-            walkPointSet = false;
-    }
-    private void SearchWalkPoint()
-    {
-        //Calculate random point in range
-        float randomZ = Random.Range(-walkPointRange, walkPointRange);
-        float randomX = Random.Range(-walkPointRange, walkPointRange);
+    //     Walkpoint reached
+    //     if (distanceToWalkPoint.magnitude < 1f)
+    //         walkPointSet = false;
+    // }
+    // private void SearchWalkPoint()
+    // {
+    //     Calculate random point in range
+    //     float randomZ = Random.Range(-walkPointRange, walkPointRange);
+    //     float randomX = Random.Range(-walkPointRange, walkPointRange);
 
-        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+    //     walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
-            walkPointSet = true;
-    }
+    //     if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
+    //         walkPointSet = true;
+    // }
 
     private void ChasePlayer()
     {
@@ -76,7 +76,7 @@ public class EnemyAI : MonoBehaviour
     private void AttackPlayer()
     {
         //Make sure enemy doesn't move
-        agent.SetDestination(transform.position);
+        //agent.SetDestination(transform.position);
 
         transform.LookAt(player);
 
@@ -97,16 +97,6 @@ public class EnemyAI : MonoBehaviour
         alreadyAttacked = false;
     }
 
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-
-        if (health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
-    }
-    private void DestroyEnemy()
-    {
-        Destroy(gameObject);
-    }
 
     private void OnDrawGizmosSelected()
     {
