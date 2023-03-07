@@ -722,6 +722,7 @@ GameObject:
   - component: {fileID: 2642696331320441981}
   - component: {fileID: 3905961420807129685}
   - component: {fileID: 3243768792962582}
+  - component: {fileID: 1341022852555932608}
   m_Layer: 3
   m_Name: player
   m_TagString: Untagged
@@ -815,7 +816,7 @@ MonoBehaviour:
   StartAnimTime: 0.3
   StopAnimTime: 0.15
   JumpForce: 5
-  Gravity: 1
+  Gravity: 0.0075
 --- !u!114 &3243768792962582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -830,7 +831,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bladeMode: 0
   zoomOffset: {x: 0.6, y: 0, z: 0}
-  crossHair: {fileID: 0}
   zoomFOV: 15
   destroycutedObject: 3
   cutPlane: {fileID: 0}
@@ -839,6 +839,21 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 512
+--- !u!114 &1341022852555932608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1785835676244021806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 756342b81386ec84f95bd622f6463d12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  killCount: 0
+  EMP_CoolDown: 2
+  isEMP: 0
 --- !u!1 &2166488580900417866
 GameObject:
   m_ObjectHideFlags: 0

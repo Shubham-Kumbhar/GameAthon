@@ -40,7 +40,7 @@ public class EnemyAI : MonoBehaviour
 
         // if (!playerInSightRange && !playerInAttackRange) Patroling();
         // if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-        if (playerInAttackRange && playerInSightRange && player.GetComponent<EMP>().isEMP) AttackPlayer();
+        if (playerInAttackRange && playerInSightRange && !player.GetComponent<EMP>().isEMP) AttackPlayer();
     }
 
     private void Patroling()
