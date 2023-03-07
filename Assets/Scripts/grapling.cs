@@ -31,7 +31,7 @@ public class grapling : MonoBehaviour
     {
         if (Graplinghook.parent == handPosition)
         {
-            Graplinghook.localPosition = Vector3.Lerp(Graplinghook.localPosition,new Vector3 (0f, 0f, 1f), 100f);
+            Graplinghook.localPosition = Vector3.Lerp(Graplinghook.localPosition,new Vector3 (0f, 0f, 1f), 1000f);
             
         }
 
