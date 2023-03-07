@@ -77,12 +77,13 @@ public class BladeModeScript : MonoBehaviour
         }
        
 
-        Debug();
+        debug();
     }
 
     public void Slice()
     {
         Collider[] hits = Physics.OverlapBox(cutPlane.position, new Vector3(5, 0.1f, 5), cutPlane.rotation, layerMask);
+
 
         if (hits.Length <= 0)
             return;
@@ -98,7 +99,10 @@ public class BladeModeScript : MonoBehaviour
                 AddHullComponents(top);
                 Destroy(hits[i].gameObject);
             }
-        }
+            if(hits[i].transform.CompareTag("Enemy")){
+            GetComponent<MovementInput>().killCount++;
+            Debug.Log("Working");
+        }}
     }
 
     public void AddHullComponents(GameObject go)
@@ -190,7 +194,7 @@ public class BladeModeScript : MonoBehaviour
     }
 
 
-    void Debug()
+    void debug()
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
