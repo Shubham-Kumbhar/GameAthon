@@ -53,13 +53,13 @@ public class MovementInput : MonoBehaviour {
         
 		//If you don't need the character grounded then get rid of this part.
 		isGrounded = controller.isGrounded;
-		// if (isGrounded) {
-		// 	verticalVel -= 0;
-		// } else {
-		// 	verticalVel -= 1;
-		// }
-		// moveVector = new Vector3 (0, verticalVel*Gravity*Time.deltaTime,0);
-		// controller.Move (moveVector);
+		if (isGrounded) {
+			verticalVel -= 0;
+		} else {
+			verticalVel -= 1;
+		}
+		moveVector = new Vector3 (0, verticalVel*Gravity*Time.deltaTime,0);
+		controller.Move (moveVector);
         
 		if(Input.GetKeyDown(KeyCode.Space))
         {
