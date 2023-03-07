@@ -23,9 +23,10 @@ Material:
   m_Name: planeMaterial
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ValidKeywords:
+  - _EMISSION
   - _GLOSSYREFLECTIONS_OFF
   m_InvalidKeywords: []
-  m_LightmapFlags: 4
+  m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -117,7 +118,7 @@ Material:
     - Color_B1C63538: {r: 26.523668, g: 60.54315, b: 64.57936, a: 0}
     - Vector2_3C9E7011: {r: 15, g: 15, b: 0, a: 0}
     - _BaseColor: {r: 0.36561054, g: 0.6860137, b: 0.9811321, a: 1}
-    - _Color: {r: 0.7924528, g: 0.3476326, b: 0.3476326, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Color: {r: 0.9529412, g: 0.45645997, b: 0.4431373, a: 0.4117647}
+    - _EmissionColor: {r: 0.8117647, g: 0.11548717, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
